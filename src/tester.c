@@ -17,7 +17,7 @@ int main(void){
     void *b = mini_malloc(7);
     assert(((unsigned long)a % 8) == 0);
     assert(((unsigned long)b % 8) == 0);
-
+    
     void *r = mini_malloc(64);
     memset(r, 0xAB, 64);
     r = mini_realloc(r, 16);
@@ -29,6 +29,7 @@ int main(void){
     assert(g2);
 
     mini_free(a); mini_free(b); mini_free(r); mini_free(g2);
-    puts("mini allocator smoke test passed.");
+
+    puts("mini allocator test passed.");
     return 0;
 }
