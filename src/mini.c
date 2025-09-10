@@ -51,3 +51,12 @@ void *mini_malloc(long payload_size) {
     // No fit: extend heap
     return heap_extend(req);
 }
+
+
+
+void mini_free(void *ptr) {
+    if (!ptr) return;
+    block_t *b = payload_to_block(ptr);
+    block_set_allocated(b, 0);
+    if (!coalesce(b)) insert_free_block(b);
+}
